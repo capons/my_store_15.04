@@ -1,0 +1,1 @@
+http://camohub.github.io/jquery-sortable-lists/#baseElement - мануал по библиотеке Sortable list
