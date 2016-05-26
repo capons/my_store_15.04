@@ -79,10 +79,10 @@ class Main extends CI_Controller {
                 // end pagination config
             }
         }
-        $data['header'] = $this->load->view('layout/header_layout', $data,true); //load view header and send some data to header (if needed in the future)
-        $data['footer'] = $this->load->view('layout/footer_layout', $data,true); //load view footer and send some data to footer (if needed in the future)
+        $data['header'] = $this->load->view('layout/new_header_layout', $data,true); //load view header and send some data to header (if needed in the future)
+        $data['footer'] = $this->load->view('layout/new_footer_layout', $data,true); //load view footer and send some data to footer (if needed in the future)
         $data['basket_view'] = $this->load->view('layout/basket_view_layout',$data,true); // load basket buyer view
-        $this->load->view('store_pages/main/main',$data);                                         //load page view
+        $this->load->view('store_pages/main/new_main',$data);                                         //load page view
     }
     public function basket(){
         if(isset($_POST['basket_goods_plus'])){            //increase basket goods quantity js/main_angels.js
