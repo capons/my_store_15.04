@@ -118,7 +118,7 @@
                                     if(isset($links)) {
                                         echo $links; //pagination
                                     }
-                                }
+                                } 
                                 ?>
 
                             </div>

@@ -38,7 +38,7 @@ var goods = (function () {
             });
         },
         basket_modal: function () { //show basket modal
-            $("#angel_basket").click(function(){
+            $("#s-shop-bag").click(function(){
                 //hiding unnecessary elements of the basket
                 if($("#basket-body").css("display") == 'none'){      //if hide - show
                     $("#basket-body").slideToggle("fast");          //show basket orders body if hiden
@@ -404,7 +404,7 @@ var goods = (function () {
                                         //ДОДЕЛАТЬ ОТВЕТ СОЗДАНИЯ ОРДЕРА ПРИ ВВЕДЕНИИ АДРЕСА В РУЧНУЮ
 
                                         //window.location.replace('./main/complete');
-                                        window.location.replace(base_url+'main/complete');
+                                        window.location.replace(base_url+'/main/complete');
 
 
 
@@ -1032,7 +1032,7 @@ function basket_plus(id){ //updates quantity goods in the basket
     var goods_quantity = $('#b-goods-quantity-'+id).val();     //curent quantity
     goods_quantity++;                                          //Increase goods quantity
     $.ajax({                                                   //send new goods quantity to php, for change session basket quantity
-        url: "http://localhost/bogdan/STORE/main/basket",
+        url:  base_url+'/main/basket',
         type: "POST",
         data: {basket_goods_plus: goods_quantity,basket_goods_plus_id:id},
         success: function (data) {
@@ -1062,7 +1062,7 @@ function basket_minus(id){ //updates quantity goods in the basket
     if(goods_quantity > 1) {
         goods_quantity--;     //decrease goods quantity
         $.ajax({                                                   //send new goods quantity to php, for change session basket quantity
-            url: "http://localhost/bogdan/STORE/main/basket",
+            url:  base_url+'/main/basket',
             type: "POST",
             data: {basket_goods_minus: goods_quantity,basket_goods_minus_id:id},
             success: function (data) {
@@ -1087,7 +1087,7 @@ function basket_minus(id){ //updates quantity goods in the basket
         basket_indicator.data("total_sum", new_basket_sum);        //set new data attr - for correctly calculation
     } else {                //while reducing the number of goods if goods quantity <= 1 remove goods from basket
         $.ajax({                                                   //send new goods quantity to php, for change session basket quantity
-            url: "http://localhost/bogdan/STORE/main/basket",
+            url:  base_url+'/main/basket',
             type: "POST",
             data: {remove_basket_goods:id},
             success: function (data) {

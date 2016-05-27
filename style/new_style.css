@@ -114,11 +114,11 @@ li a {
 #s-sign-in:hover {
     color:blue;
 }
-#s-shop-bag:hover #s-basket-n {
+#s-shop-bag:hover #angel_basket {
     color: blue;
 }
 /* ./hover*/
-#s-basket-n {
+#angel_basket {
     color:red;
 }
 .nav.navbar-nav li a:hover{
@@ -395,6 +395,7 @@ li a {
 }
 .product-content-body {
     background-color: rgb(238, 238, 238);
+    margin-bottom: 27px;
 }
 .product-presentation-body {
     background-color: rgb(255,255,255);
@@ -404,9 +405,7 @@ li a {
 .product-image-body {
     padding: 1%;
 }
-.col-xs-12.product-image-body img{
-    width: 100%;
-}
+
 .col-xs-12.product-title {
     font-family: ROBOTO;
     font-size: 13px;
@@ -443,7 +442,10 @@ li a {
     text-align: center;
     margin-bottom: 2px;
 }
-
+.cont-m-image {
+    height: 250px;
+    width: 250px;
+}
 .bshop-b-b {
     border: none;
     height: 26px;
@@ -462,8 +464,85 @@ li a {
 .popular-product-p span{
     color:red;
 }
+.pr-end {
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    font-size: 14px;
+    width: 100px;
+    margin-left: -50px;
+    font-weight: 100;
+}
 /* ./product block*/
 /* ./content*/
+
+
+/*Start rotate animation for ajax #rotate*/
+@keyframes bladeSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(1440deg); }
+}
+/* Firefox */
+@-moz-keyframes bladeSpin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(1440deg); }
+}
+/* WebKit - Chrome and Safari */
+@-webkit-keyframes bladeSpin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(1440deg); }
+}
+/* Opera */
+@-o-keyframes bladeSpin {
+    from { -o-transform: rotate(0deg); }
+    to { -o-transform: rotate(1440deg); }
+}
+#rotate {
+    position:absolute;
+    display: none;
+    z-index: 2000;
+    top:50%;
+    left:50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border-top: 2px solid blue;
+    border-bottom: 2px solid blue;
+    /* Firefox */
+    -moz-animation: bladeSpin 2s ease-in-out infinite;
+    /* WebKit - Chrome and Safari */
+    -webkit-animation: bladeSpin 2s ease-in-out infinite;
+    /* Opera */
+    -o-animation: bladeSpin 2s ease-in-out infinite;
+    /* general syntax */
+    animation: bladeSpin 2s ease-in-out infinite;
+}
+/*End rotate animation for ajax #rotate*/
+/*basket modal*/
+.t_vertical {
+    vertical-align: middle !important;
+}
+.basket-goods-edit {
+    color: rgba(47, 49, 255, 0.6);
+    cursor: pointer;
+}
+.glyphicon.glyphicon-plus.basket-goods-edit {
+    margin-left: -7px;
+}
+.hiden {
+    display:none !important;
+}
+.visible {
+    display: block !important;
+}
+.class_basket_info {
+    display: table;
+    z-index: 500 !important;
+}
+/*end basket modal*/
+
 /* footer*/
 #footer-bg-c {
     background: url('../image/footer-bg.png');
@@ -660,6 +739,7 @@ li a {
     .product-presentation-body{
         width: calc(32.8% - 3px);
     }
+
     /* .product content*/
     /*footer*/
     .w-avtor {

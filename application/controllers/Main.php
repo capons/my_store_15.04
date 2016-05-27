@@ -8,8 +8,7 @@ class Main extends CI_Controller {
         $this->load->model('product_model');    //load goods model
         $this->load->model('categories_model'); //load goods categories model
         $data['parent_categories'] = $this->categories_model->all_categories();   //all categories
-        if(empty($categoryId) && empty($categoryName)) { //if empty url variable
-
+        if(empty($categoryId) && empty($categoryName)) { //if empty url variable (if the user has not clicked on the category name)
             if(isset($_GET['goods_search'])){   //serch goods query
                 $this->form_validation->set_rules('goods_search', '', 'max_length[30]|trim|prep_for_form|encode_php_tags');
                 $this->form_validation->run();  //validate form data
@@ -19,10 +18,10 @@ class Main extends CI_Controller {
             } else {
                 //goods pagination config
                 $this->load->model('product_model');    //load goods model
-                $config['base_url'] = 'http://localhost/bogdan/STORE/main/angel';
+                $config['base_url'] = base_url().'main/angel';
                 $config['total_rows'] = $this->db->count_all('stock');        // all database table count
                 $config['per_page'] = '15';                                    //rows in one page
-                $config['full_tag_open'] = '<nav><ul style="margin: 0px;padding-right:10px;float: right " class="pagination">'; //start teg
+                $config['full_tag_open'] = '<nav><ul style="margin: 0px 4px 0px 0px;float: right " class="pagination">'; //start teg
                 $config['full_tag_close'] = '</ul></nav>';                                                                      //end teg
                 $config['prev_link'] = '&lt; Prev';
                 $config['prev_tag_open'] = '<li>';
@@ -45,7 +44,7 @@ class Main extends CI_Controller {
             }
         } else {
             if(isset($_GET['goods_search'])){   //serch goods query
-                $this->form_validation->set_rules('goods_search', '', 'max_length[30]|trim|prep_for_form|encode_php_tags');
+                $this->form_validation->set_rules('goods_search', '', 'max_length[60]|trim|prep_for_form|encode_php_tags');
                 $this->form_validation->run();  //validate form data
                 $this->load->model('product_model');
                 $data['shop_product'] = $this->product_model->goods_search($_GET['goods_search']);//send data to method select_order
@@ -54,10 +53,10 @@ class Main extends CI_Controller {
                 //goods pagination config
                 $categoryId = (int)$categoryId;         //url variable
                 $this->load->model('product_model');    //load goods model
-                $config['base_url'] = 'http://localhost/bogdan/STORE/main/angel/' . $categoryName . '/' . $categoryId;
+                $config['base_url'] = base_url().'main/angel/' . $categoryName . '/' . $categoryId;
                 $config['total_rows'] = $this->db->count_all('stock');        // all database table count
                 $config['per_page'] = '15';                                    //rows in one page
-                $config['full_tag_open'] = '<nav><ul style="margin: 0px;padding-right:10px;float: right " class="pagination">'; //start teg
+                $config['full_tag_open'] = '<nav><ul style="float: right;margin: 0px 4px 0px 0px;" class="pagination">'; //start teg
                 $config['full_tag_close'] = '</ul></nav>';                                                                      //end teg
                 $config['prev_link'] = '&lt; Prev';
                 $config['prev_tag_open'] = '<li>';
@@ -84,7 +83,7 @@ class Main extends CI_Controller {
         $data['basket_view'] = $this->load->view('layout/basket_view_layout',$data,true); // load basket buyer view
         $this->load->view('store_pages/main/new_main',$data);                                         //load page view
     }
-    public function basket(){
+    public function basket(){ //shop basket
         if(isset($_POST['basket_goods_plus'])){            //increase basket goods quantity js/main_angels.js
             $goods_id = (int)$_POST['basket_goods_plus_id'];
             $goods_quantity = (int)$_POST['basket_goods_plus'];

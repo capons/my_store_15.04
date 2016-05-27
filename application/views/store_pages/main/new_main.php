@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-xs-6 carusel-right-wrapper">
                             <div class="col-xs-12">
-                                <img  src="image/carusel-main-img.png" alt="..." class="img-circle image_full_w">
+                                <img  src="<?php echo base_url(); ?>image/carusel-main-img.png" alt="..." class="img-circle image_full_w">
                                 <div class="carusel-price-bl">
                                     <div class="carusel-product-details">
                                         <p class="no-margin">Product name</p>
@@ -74,12 +74,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-8">
-                <form action="" method="get" class="form-horizontal s-form">
+                <form id="search-form" method="get" class="form-horizontal s-form">
                     <div class="form-group has-success has-feedback no-margin">
                         <label  class="control-label col-lg-3 s-label">SEARCH PRODUCT</label>
                         <div class="col-lg-4">
                             <div class="input-group">
-                                <input type="text" class="form-control s-m-input" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+                                <input name="goods_search" type="search" class="form-control s-m-input" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
                                 <span class="input-group-addon no-padding no-border"><button class="no-padding no-border s-b-search"></button></span>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
     <div class="container">
         <div class="row">
             <!--product menu-->
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <div class="content-menu-t-wrapper">
                     <ul class="c-p-menu-title">
                         <li><p class="no-margin">PRODUCTS MENU</p></li>
@@ -110,7 +110,7 @@
                         if(isset($parent_categories)) {   //category name list
                             foreach ($parent_categories as $res) { ?>
                                 <li>
-                                    <a href="<?php echo base_url(); ?>main/angel/<?php echo $res['code'].'/'.$res['id']; ?>" class="no-margin"><span class="menu-dot"></span><?php if (mb_strlen($res['name'], 'UTF-8') > 40){ echo mb_substr($res['name'], 0, 40).'...';} else { echo $res['name']; } ?><span class="p-menu-h-line" style="width: 3px;height: 36px;position: absolute;top:0px;right:0px;background-color: inherit;display: inline-block"></span></a>
+                                    <a href="<?php echo base_url(); ?>main/angel/<?php echo $res['code'].'/'.$res['id']; ?>" class="no-margin"><span class="menu-dot"></span><?php if (mb_strlen($res['name'], 'UTF-8') > 30){ echo mb_substr($res['name'], 0, 30).'...';} else { echo $res['name']; } ?><span class="p-menu-h-line" style="width: 3px;height: 36px;position: absolute;top:0px;right:0px;background-color: inherit;display: inline-block"></span></a>
                                 </li>
                             <?php }
                         }
@@ -123,7 +123,7 @@
                         <p class="no-margin c-review-text">
                             I am happy to see that fast web store!!!!!
                         </p>
-                        <img class="c-review-arrow" src="image/client-say-arrow1.png" alt="alt">
+                        <img class="c-review-arrow" src="<?php echo base_url(); ?>image/client-say-arrow1.png" alt="alt">
                     </div>
                 </div>
                 <div class="col-xs-12 no-padding c-review-name-body">
@@ -131,7 +131,11 @@
                 </div>
             </div>
             <!--product block -->
-            <div class="col-sm-9 main-product-wrapper">
+            <div class="col-md-9 main-product-wrapper">
+                <div class="col-lg-12">
+                    <p class="popular-product-p"><span>POPULAR</span> PRODUCTS NOW</p>
+                </div>
+                <!--Popular product -->
                 <div class="col-lg-12 product-content-body">
                     <?php
                     //for($i=0 ; $i <=5 ; $i++) {
@@ -143,7 +147,11 @@
                             <div class="col-xs-4 no-padding product-presentation-body">
                                 <!--product image -->
                                 <div style="text-align: center;" class="col-xs-12 product-image-body">
-                                    <img class="img-thumbnail" src="<?php echo base_url(); ?><?php echo THUMBS.$res['image_name'];  ?>">
+                                        <img class="img-thumbnail cont-m-image" src="<?php echo base_url(); ?><?php echo THUMBS.$res['image_name'];  ?>">
+                                    <?php if($res['quantity'] == 0) { ?>
+                                        <span class="label label-danger pr-end">Нет в наличии</span>
+                                        <?php
+                                    } ?>
                                 </div>
                                 <!--product title -->
                                 <div class="col-xs-12 product-title">
@@ -174,7 +182,7 @@
                                             <?php if($res['quantity'] > 0) { ?>
                                                 <button class="bshop-b-b"  type="submit"></button>
                                             <?php } else { ?>
-                                                <button class="bshop-b-b"  style="cursor: no-drop" type="button" disabled></button>
+                                                <button class="bshop-b-b"  style="cursor: no-drop;opacity: 0.5" type="button" disabled></button>
                                             <?php } ?>
                                         </form>
                                     </div>
@@ -184,45 +192,17 @@
                         }
                     }
                     ?>
-                </div>
-                <div class="col-lg-12">
-                    <p class="popular-product-p"><span>POPULAR</span> PRODUCTS NOW</p>
-                </div>
-                <!--Popular product -->
-                <div class="col-lg-12 product-content-body">
-                    <?php
-                    for($i=0 ; $i <=5 ; $i++) {
-                        ?>
-                        <div class="col-xs-4 no-padding product-presentation-body">
-                            <!--product image -->
-                            <div class="col-xs-12 product-image-body">
-                                <img src="image/product_img.png">
-                            </div>
-                            <!--product title -->
-                            <div class="col-xs-12 product-title">
-                                <p>Kids Moon Colorblock Footer Tights</p>
-                            </div>
-                            <div class="product-bottom-line">
-                                <!--Border line -->
-                            </div>
-                            <div class="col-xs-12 no-padding">
-                                <div class="col-lg-6 no-padding">
-
-                                    <div class="product-r-border">
-                                        <!--Border line -->
-                                    </div>
-                                    <!--product price -->
-                                    <p class="product-price">
-                                        $ 8.99</p>
-                                </div>
-                                <div class="col-lg-6 no-padding product-buy-body">
-                                    <button></button>
-                                </div>
-                            </div>
-                        </div>
+                    <!--Goods pagination link -->
+                    <div class="col-sx-12" >
                         <?php
-                    }
-                    ?>
+                        if (!empty($this->uri->segment(4))) {
+                            if(isset($links)) {
+                                echo $links; //pagination
+                            }
+                        }
+
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -234,6 +214,9 @@
     <!-- end basket modal -->
 </section>
 <!--end content -->
+<!-- shop basket view-->
+<?php if($basket_view) echo $basket_view; ?>
+<!-- ./shop basket view-->
 <!--section footer -->
 <?php if($footer) echo $footer ;?>
 <!--end section footer -->

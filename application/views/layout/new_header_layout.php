@@ -37,7 +37,21 @@
                         <button id="s-sign-in" class="btn b_full_container">Sign in</button>
                     </li>
                     <li>
-                        <button id="s-shop-bag" class="btn b_full_container"><p class="no-margin"><span id="s-basket-n">Shopping Bag</span><span id="b-t-order">(0)</span><span id="shop_bag"></span></p></button>
+                        <button id="s-shop-bag" class="btn b_full_container"><p class="no-margin"><span id="angel_basket">Shopping Bag</span><span id="b-t-order">
+                                    (
+                                    <?php
+                                    if(isset($_SESSION['angel_basket'])){
+                                        echo '<span style="margin-left: -3px;">';
+                                        echo count($_SESSION['angel_basket']); //show goods count in basket
+                                        echo '</span>';
+                                    } else {
+                                        echo '<span style="margin-left: -3px;">';
+                                        echo 0;
+                                        echo '</span>';
+                                    }
+                                    ?>
+                                    )</span><span id="shop_bag"></span></p>
+                        </button>
                     </li>
                 </ul>
             </div>
