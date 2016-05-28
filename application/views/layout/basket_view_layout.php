@@ -50,7 +50,7 @@
                                             <form class="form-horizontal basket-goods-data">
                                                 <div style="margin-bottom: 0px" class="form-group">
                                                     <label onclick="basket_minus(<?php echo $key; ?>);" id="b-goods-minus-<?php echo $key; ?>" class="col-sm-2 control-label glyphicon glyphicon-minus basket-goods-edit"></label>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-xs-4">
                                                         <input id="b-goods-quantity-<?php echo $key; ?>" type="text" data-price="<?php echo $g_res['price']; ?>" class="form-control" name="basket_goods_quantity_<?php echo $key; ?>" value="<?php echo $g_res['quantity'] ?>">
                                                     </div>
                                                     <label onclick="basket_plus(<?php echo $key; ?>);" id="b-goods-plus-<?php echo $key; ?>" class="col-sm-2 control-label glyphicon glyphicon-plus basket-goods-edit"></label>

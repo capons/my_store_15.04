@@ -34,7 +34,20 @@
                         <button id="s-join" class="btn b_full_container">Join</button>
                     </li>
                     <li>
-                        <button id="s-sign-in" class="btn b_full_container">Sign in</button>
+                        <?php
+                        if(!isset($_SESSION['marker']['user'])) {
+                            ?>
+                            <button id="s-sign-in" class="btn b_full_container">Sign in</button>
+                            <?php
+                        } else { ?>
+                            <form style="height: 100%" method="post" action="main/logout" class="form-horizontal">
+                                <input type="hidden" class="form-control"  name="s-log-out" value="<?php echo $_SESSION['marker']['user']['id'] ?>">
+                                <button type="submit" id="s-log-out" class="btn b_full_container">Log out</button>
+                            </form>
+
+                        <?php
+                        }
+                        ?>
                     </li>
                     <li>
                         <button id="s-shop-bag" class="btn b_full_container"><p class="no-margin"><span id="angel_basket">Shopping Bag</span><span id="b-t-order">

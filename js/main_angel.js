@@ -24,6 +24,7 @@ $(document).ready(function () {
 var goods = (function () {
     var doConstruct = function () {
         main.add_init_callback(this.ajax_respons_rotaite); //animation while ajax respons
+        main.add_init_callback(this.author_modal); //show modal authorization and registration user
         main.add_init_callback(this.basket_modal); //show basket modal
         main.add_init_callback(this.list_basket_back); //list basket menu back
         main.add_init_callback(this.order_formalization); // show form to creat order
@@ -35,6 +36,20 @@ var goods = (function () {
             });
             $( document ).ajaxStop(function() {
                 $( "#rotate" ).hide();
+            });
+        },
+        author_modal: function () { //modal window authorization and registration user
+            $('#s-join').click(function(){                  //show registration modal
+                $('#join-modal').modal('show');
+            });
+            if( $.trim( $('#info-body').html() ).length ) { //show information modal
+                $('#w-info').modal('show');
+            }
+            $('#s-sign-in').click(function(){               //show login modal
+                $('#sign-in-modal').modal('show');
+            });
+            $('#add_post').click(function(){               //show "#post-modal" modal
+                $('#post-modal').modal('show');
             });
         },
         basket_modal: function () { //show basket modal

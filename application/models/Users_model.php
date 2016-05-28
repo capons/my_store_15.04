@@ -76,4 +76,11 @@ class Users_model extends CI_Model{
             return false;
         }
     }
+    //check login user data
+    function check_login_in($email,$pass){                //check login in
+        $this->db->where('email',$email);
+        $this->db->where('pass',$pass);
+        $query = $this->db->get('authorization');
+        return $query->result_array();
+    }
 }

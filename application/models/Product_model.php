@@ -118,4 +118,14 @@ class Product_model extends CI_Model{
             return false;
         }
     }
+    function best_product(){     //show best product for header carusel slider in
+        $this->db->select('product_image.image_name, stock.stock_id, stock.name, stock.model,stock.description, stock.price, stock.quantity');
+        $this->db->from('product_image');
+        $this->db->join('stock', 'stock.stock_id = product_image.id_stock_product');
+        $this->db->group_by("stock.stock_id");
+        $this->db->order_by('id', 'RANDOM');
+        $this->db->limit(3);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

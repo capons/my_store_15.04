@@ -242,5 +242,44 @@ class Rules_model extends CI_Model
             'rules' => 'required|max_length[100]|trim|prep_for_form|encode_php_tags'
         )
     );
+    public $reg_rules = array( //reg rules
+        array(
+            'field' => 'u-phone',
+            'label' => 'Phone',
+            'rules' => 'required|max_length[40]|trim|prep_for_form|encode_php_tags'
+        ),
+        array(
+            'field' => 'u-name',
+            'label' => 'Name',
+            'rules' => 'required|max_length[30]|trim|prep_for_form|encode_php_tags'
+        ),
+        array(
+            'field' => 'u-city',
+            'label' => 'City',
+            'rules' => 'required|max_length[30]|trim|prep_for_form|encode_php_tags'
+        ),
+        array(
+            'field' => 'u-email',
+            'label' => 'Email',
+            'rules' => 'required|max_length[30]|trim|valid_email|prep_for_form|encode_php_tags'
+        ),
+        array(
+            'field' => 'u-pass',
+            'label' => 'Password',
+            'rules' => 'required|max_length[30]|trim|prep_for_form|encode_php_tags|md5'
+        ),
+    );
+    public $login_rules = array(               //login user data validation
+        array(
+            'field' => 's-email',
+            'label' => 'Email',
+            'rules' => 'required|trim|prep_for_form|encode_php_tags'
+        ),
+        array(
+            'field' => 's-pass',
+            'label' => 'Password',
+            'rules' => 'required|trim|prep_for_form|encode_php_tags'
+        )
+    );
 
 }

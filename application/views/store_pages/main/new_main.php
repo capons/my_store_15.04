@@ -2,11 +2,14 @@
 
 
 <!--header-->
-<?php if($header) echo $header ;?>
+<?php if($header) echo $header; ?>
 <!--end header -->
+<!--modal window -->
+<?php if($modal_window) echo $modal_window; ?>
+<!-- ./modal window-->
 <!--carusel section -->
 <section>
-    <div id="carousel-example-generic" class="carousel slide sl-head" data-ride="carousel" data-interval="false">
+    <div id="carousel-example-generic" class="carousel slide sl-head" data-ride="carousel" > <!--data-interval="true" (disabled carusel auto slide) -->
         <!-- Indicators -->
         <!--
         <ol class="carousel-indicators">
@@ -19,44 +22,46 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner sl-head" role="listbox">
             <!-- First slide-->
-            <div  class="item wrapper-sl-head active">
-                <!--
-                <img style="min-height: 536px;" src="image/carusel_bg.png" alt="...">
-                -->
-                <div class="carousel-caption">
-                    <div class="row">
-                        <div class="col-xs-6 carusel-left-wrapper">
-                            <div class="col-xs-12 sl-head-captive-wrapper">
-                                <p class="no-margin header-carisel-slide-t-c">We provide worlds</p>
-                                <p class="no-margin header-carisel-slide-t-c">Top fashion for less</p>
-                                <p class="no-margin header-carisel-slide-t-c">fashionpress.</p>
-                                <p class="header-carusel-slide-t-f">FashionPress the name of hi class fashion web.</p>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 carusel-right-wrapper">
-                            <div class="col-xs-12">
-                                <img  src="<?php echo base_url(); ?>image/carusel-main-img.png" alt="..." class="img-circle image_full_w">
-                                <div class="carusel-price-bl">
-                                    <div class="carusel-product-details">
-                                        <p class="no-margin">Product name</p>
-                                        <p class="no-margin">price $</p>
+            <?php
+            if (isset($carusel_data)) {
+                $isFirst = true; //variable to corect display carusel "active" clase
+                foreach($carusel_data as $car_data) {
+                    ?>
+                    <div class="item wrapper-sl-head <?php if($isFirst === true) {echo 'active';} ?>">
+                        <!--
+                        <img style="min-height: 536px;" src="image/carusel_bg.png" alt="...">
+                        -->
+                        <div class="carousel-caption">
+                            <div class="row">
+                                <div class="col-xs-6 carusel-left-wrapper">
+                                    <div class="col-xs-12 sl-head-captive-wrapper">
+                                        <p class="no-margin header-carisel-slide-t-c">We offer the best fashion
+                                            decisions</p>
+                                        <p class="header-carusel-slide-t-f">We'll make you better</p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 carusel-right-wrapper">
+                                    <div class="col-xs-12">
+                                        <!--
+                                        <img src="<?php// echo base_url(); ?>image/carusel-main-img.png" alt="..." class="img-circle image_full_w">
+                                        -->
+                                        <img src="<?php echo base_url(); ?>stock_image/thumbs/<?php echo $car_data['image_name']; ?>" alt="..." class="img-circle image_full_w">
+                                        <div class="carusel-price-bl">
+                                            <div class="carusel-product-details">
+                                                <p class="no-margin"><?php if (mb_strlen($car_data['name'], 'UTF-8') > 15){ echo mb_substr($car_data['name'], 0, 15).'...';} else { echo $car_data['name']; } ?></p>
+                                                <p class="no-margin"><?php echo $car_data['price']; ?> грн</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!--Second Slide -->
-            <div style="min-height: 536px;height: 536px;" class="item">
-                <!--
-                <img src="..." alt="...">
-                -->
-                <div class="carousel-caption">
-                    1234556456456
-                </div>
-
-            </div>
+                    <?php
+                    $isFirst = false; //change variable in the end of loop , for correctly display carusel
+                }
+            }
+            ?>
         </div>
         <!-- Controls -->
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -98,7 +103,7 @@
 <!--content -->
 <section class="content-wrapper">
     <div class="container">
-        <div class="row">
+        <div class="row main-c-row">
             <!--product menu-->
             <div class="col-md-3">
                 <div class="content-menu-t-wrapper">
@@ -155,10 +160,7 @@
                                 </div>
                                 <!--product title -->
                                 <div class="col-xs-12 product-title">
-                                    <!--
-                                    <p>Kids Moon Colorblock Footer Tights</p>
-                                    -->
-                                    <a style="cursor: pointer" onclick="product_view(<?php echo $res['stock_id']; ?>)"><?php echo $res['name']; ?></a>
+                                    <a style="cursor: pointer" onclick="product_view(<?php echo $res['stock_id']; ?>)"><?php if (mb_strlen($res['name'], 'UTF-8') > 15){ echo mb_substr($res['name'], 0, 15).'...';} else { echo $res['name']; } ?></a>
                                 </div>
                                 <div class="product-bottom-line">
                                     <!--Border line -->

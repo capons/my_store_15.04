@@ -78,9 +78,12 @@ class Main extends CI_Controller {
                 // end pagination config
             }
         }
+        $data['carusel_data'] = $this->product_model->best_product(); //load data for header "carusel-slider"
         $data['header'] = $this->load->view('layout/new_header_layout', $data,true); //load view header and send some data to header (if needed in the future)
         $data['footer'] = $this->load->view('layout/new_footer_layout', $data,true); //load view footer and send some data to footer (if needed in the future)
         $data['basket_view'] = $this->load->view('layout/basket_view_layout',$data,true); // load basket buyer view
+        $data['modal_window'] = $this->load->view('layout/modal_window',$data,true); // load basket buyer view
+
         $this->load->view('store_pages/main/new_main',$data);                                         //load page view
     }
     public function basket(){ //shop basket
@@ -389,7 +392,6 @@ class Main extends CI_Controller {
                                         $error_arr[0] = 'db_error';
                                         $error_arr[1] = 'Попробуйте еще раз';
                                     } else {
-
                                         //unset($_SESSION['angel_basket']);
                                        // unset($_SESSION['buyer_info']);
                                         $_SESSION['buyer_info']['order_id'] = $res_o;
@@ -397,10 +399,6 @@ class Main extends CI_Controller {
                                         //Загружать блок с отображенным номером заказа $res_o на JS
                                         
                                         
-
-
-
-
 
                                     }
                                 }
@@ -662,6 +660,75 @@ class Main extends CI_Controller {
                     $this->load->view('store_pages/complete_pp', $data);
                 }
             } else {
+                redirect('', 'refresh');
+            }
+        } else {
+            redirect('', 'refresh');
+        }
+    }
+    public function registration_user() {        //registr user
+        if (isset($_POST['u-email'])) {
+            $this->load->model('users_model'); //load model
+            $this->load->model('rules_model'); //load model rules
+            $this->form_validation->set_rules($this->rules_model->reg_rules);
+            $check = $this->form_validation->run();
+            if ($check == true) {
+                $email = $this->input->post('u-email');
+                $data1 = $this->users_model->check_email($email); //check email
+                if (!empty($data1)) {
+                    $this->session->set_flashdata('message', 'Email already busy');
+                    redirect('', 'refresh');
+                }
+                $add['name'] = $this->input->post('u-name');
+                $add['email'] = $this->input->post('u-email');
+                $add['pass'] = $this->input->post('u-pass');
+                $add['tell'] = $this->input->post('u-phone');
+                $add['city'] = $this->input->post('u-city');
+                $add['role'] = (int)1;
+                $this->db->insert('authorization', $add);
+
+                $this->session->set_flashdata('message', 'Congratulations you have successfully registered');
+                redirect('', 'refresh');
+
+            } else {
+                $this->session->set_flashdata('message', validation_errors());
+                redirect('', 'refresh');
+            }
+        } else {
+            //redirect('Market/cars', 'refresh');
+        }
+    }
+    public function authorization_user() {        //registr user
+        if (isset($_POST['s-email'])) {
+            $this->load->model('rules_model'); //load model
+            $this->form_validation->set_rules($this->rules_model->login_rules); // load model for input validation
+            $check = $this->form_validation->run();
+            if ($check == true) {      //if validation == true
+                $email = $_POST['s-email'];
+                $pass = md5($_POST['s-pass']);
+                $this->load->model('users_model');
+                $data = $this->users_model->check_login_in($email, $pass);
+                if (!empty($data)) {
+                    $_SESSION['marker']['user'] = $data[0];                         //user data put into session
+                    $this->session->set_flashdata('message', 'You have successfully logged');
+                    redirect('', 'refresh');
+                } else {
+                    $this->session->set_flashdata('message', 'Invalid username or password');
+                    redirect('', 'refresh');
+                }
+            }
+        } else {
+            redirect('', 'refresh');
+        }
+    }
+    public function logout () {  //log out user
+        if (isset($_POST['s-log-out'])) {
+            if($_POST['s-log-out'] == $_SESSION['marker']['user']['id']){
+                $this->session->set_flashdata('message', 'You have successfully log out');
+                $this->session->unset_userdata('marker'); // unset log in user data
+                redirect('', 'refresh');
+            } else {
+                $this->session->set_flashdata('message', 'Please try again');
                 redirect('', 'refresh');
             }
         } else {
