@@ -128,4 +128,12 @@ class Product_model extends CI_Model{
         $query = $this->db->get();
         return $query->result_array();
     }
+    function product_view ($id) {
+        $this->db->select('product_image.image_name, stock.stock_id, stock.name, stock.model,stock.description, stock.price, stock.quantity');
+        $this->db->from('product_image');
+        $this->db->join('stock', 'stock.stock_id = product_image.id_stock_product');
+        $this->db->where('stock.stock_id',$id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

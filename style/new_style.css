@@ -412,6 +412,7 @@ li a {
     background-color: rgb(255,255,255);
     width: calc(32.9% - 3px);
     margin: 3px;
+    border-radius: 3px;
 }
 .product-image-body {
     padding: 1%;
@@ -425,6 +426,9 @@ li a {
     margin-top: 10px;
     word-wrap: normal;
     text-align: left;
+}
+.product-title a:hover {
+    text-decoration: none;
 }
 .product-bottom-line {
     position: relative;
@@ -456,6 +460,10 @@ li a {
 .cont-m-image {
     height: 250px;
     width: 250px;
+    cursor: pointer;
+}
+.cont-m-image:hover {
+    border: 2px solid gainsboro;
 }
 .bshop-b-b {
     border: none;

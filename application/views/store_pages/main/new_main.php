@@ -72,7 +72,7 @@
             <span class="car_right_control" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> <!-- ./carusel-->
 </section>
 <!--search section -->
 <section class="s-content">
@@ -152,7 +152,7 @@
                             <div class="col-xs-4 no-padding product-presentation-body">
                                 <!--product image -->
                                 <div style="text-align: center;" class="col-xs-12 product-image-body">
-                                        <img class="img-thumbnail cont-m-image" src="<?php echo base_url(); ?><?php echo THUMBS.$res['image_name'];  ?>">
+                                        <img onclick="product_view(<?php echo $res['stock_id']; ?>)" class="img-thumbnail cont-m-image" src="<?php echo base_url(); ?><?php echo THUMBS.$res['image_name'];  ?>">
                                     <?php if($res['quantity'] == 0) { ?>
                                         <span class="label label-danger pr-end">Нет в наличии</span>
                                         <?php

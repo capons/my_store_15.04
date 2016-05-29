@@ -721,6 +721,17 @@ class Main extends CI_Controller {
             redirect('', 'refresh');
         }
     }
+    public function product_view () { //product view
+        if(isset($_POST['product_view'])){
+            //echo $_POST['product_view']; //response to ajax main_angel.js
+            //$product_id = (int)$_POST['product_view'];
+            $this->load->model('product_model');
+            $data = $this->product_model->product_view($_POST['product_view']);
+            $data = json_encode($data);
+            echo $data;
+            //echo 'sdfsdf';
+        }
+    }
     public function logout () {  //log out user
         if (isset($_POST['s-log-out'])) {
             if($_POST['s-log-out'] == $_SESSION['marker']['user']['id']){

@@ -1122,7 +1122,52 @@ function basket_minus(id){ //updates quantity goods in the basket
 }
 //product view
 function product_view(id){
-    console.log(id);
+    var product_id = parseInt(id);
+    var active = 'active'; // add active class to carusel
+    $('#produc-m-close').click(function(){    //refresh modal to show product info
+        $('#m-p-view-body').html('');
+    });
+    $.ajax({                                                   //send new goods quantity to php, for change session basket quantity
+        url:  base_url+'main/product_view',
+        type: "POST",
+        data: {product_view: product_id},
+        success: function (data) {
+            var respons_data = JSON.parse(data);
+            $('#product_view_info').modal('show');
+            //$('#product_view_wrapper').html(respons_data[0]);
+            var isFirst = true; //variable for the correct operation of the slider
+            $.each(respons_data, function(key,value) {
+               // $('.product-view-m-img').attr("src",base_url+'stock_image/'+value.image_name);
+                if(isFirst = true) {
+                    $('#m-p-view-body').append(
+                        '<div style="text-align: center" class="item active">' //with active class
+                        +
+                        '<img style="width:100%" src="' + base_url + 'stock_image/' + value.image_name + '" alt="...">'
+                        +
+                        '<div class="carousel-caption">'
+                        +
+                        '</div>'
+                        +
+                        '</div>'
+                    );
+                } else {
+                    $('#m-p-view-body').append(
+                        '<div style="text-align: center" class="item">'       //without the class "active" (for correct work of the carusel)
+                        +
+                        '<img style="width:100%" src="' + base_url + 'stock_image/' + value.image_name + '" alt="...">'
+                        +
+                        '<div class="carousel-caption">'
+                        +
+                        '</div>'
+                        +
+                        '</div>'
+                    );
+                }
+                var isFirst = false;
+            })
+
+        }
+    });
 }
 //input mask add phone number (script connect in ) libs/jquery_masked_library
 jQuery(function($) {
