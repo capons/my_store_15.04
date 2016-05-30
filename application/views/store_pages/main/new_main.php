@@ -9,7 +9,7 @@
 <!-- ./modal window-->
 <!--carusel section -->
 <section>
-    <div id="carousel-example-generic" class="carousel slide sl-head" data-ride="carousel" > <!--data-interval="true" (disabled carusel auto slide) -->
+    <div id="main-carusel" class="carousel slide sl-head" data-ride="carousel" > <!--data-interval="true" (disabled carusel auto slide) -->
         <!-- Indicators -->
         <!--
         <ol class="carousel-indicators">
@@ -64,11 +64,11 @@
             ?>
         </div>
         <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#main-carusel" role="button" data-slide="prev">
             <span class="car_left_control" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <a class="right carousel-control" href="#main-carusel" role="button" data-slide="next">
             <span class="car_right_control" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
