@@ -451,6 +451,7 @@ class Main extends CI_Controller {
                     curl_setopt($ch, CURLOPT_HEADER, false);
                     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                     curl_setopt($ch, CURLOPT_POST, true);
+
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     curl_setopt($ch, CURLOPT_USERPWD, $clientId.":".$secret);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
@@ -469,8 +470,8 @@ class Main extends CI_Controller {
                     $data = '{
                               "intent":"sale",
                               "redirect_urls":{
-                                "return_url":"http://localhost/bogdan/STORE/main/complete_pp",  
-                                "cancel_url":"http://localhost/bogdan/STORE/main/order"
+                                "return_url":"http://localhost/bogdan/my_store_15.04/main/complete_pp",  
+                                "cancel_url":"http://localhost/bogdan/my_store_15.04/main/order"
                               },
                               "payer":{
                                 "payment_method":"paypal"

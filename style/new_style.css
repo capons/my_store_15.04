@@ -493,6 +493,62 @@ li a {
     font-weight: 100;
 }
 /* ./product block*/
+.f-placeholder {
+    position: absolute;
+    left:25px;
+    bottom: 7px;
+}
+.f-placeholder p{
+    opacity: 0.5;
+}
+.f-placeholder-u-p {
+    position: absolute;
+    left:25px;
+    bottom: 7px;
+}
+.f-placeholder-u-p p{
+    opacity: 0.5;
+}
+.f-placeholder-u-c {
+    position: absolute;
+    left:25px;
+    bottom: 7px;
+}
+.f-placeholder-u-c p{
+    opacity: 0.5;
+}
+.f-placeholder-u-e {
+    position: absolute;
+    left:25px;
+    bottom: 7px;
+}
+.f-placeholder-u-e p{
+    opacity: 0.5;
+}
+.f-placeholder-u-pa {
+    position: absolute;
+    left:25px;
+    bottom: 7px;
+}
+.f-placeholder-u-pa p{
+    opacity: 0.5;
+}
+.f-placeholder-a-e {
+    position: absolute;
+    left:25px;
+    bottom: 7px;
+}
+.f-placeholder-a-e p{
+    opacity: 0.5;
+}
+.f-placeholder-a-s {
+    position: absolute;
+    left:25px;
+    bottom: 7px;
+}
+.f-placeholder-a-s p{
+    opacity: 0.5;
+}
 /* ./content*/
 
 

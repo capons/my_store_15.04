@@ -11,31 +11,46 @@
                     <div class="form-group">
                         <label style="font-weight: 100" for="inputEmail3" class="col-sm-2 control-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  name="u-name" placeholder="Name">
+                            <input type="text" class="form-control"  name="u-name" >
+                            <div class="f-placeholder">
+                                <p class="no-margin">Name</p>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label style="font-weight: 100" for="inputEmail3" class="col-sm-2 control-label">Phone</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control"  name="u-phone" placeholder="Phone">
+                            <input type="number" class="form-control"  name="u-phone">
+                            <div class="f-placeholder-u-p">
+                                <p class="no-margin">Phone</p>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label style="font-weight: 100" for="inputEmail3" class="col-sm-2 control-label">City</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  name="u-city" placeholder="City">
+                            <input type="text" class="form-control"  name="u-city">
+                            <div class="f-placeholder-u-c">
+                                <p class="no-margin">City</p>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label style="font-weight: 100" for="inputEmail3" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control"  name="u-email" placeholder="Email">
+                            <input type="email" class="form-control"  name="u-email">
+                            <div class="f-placeholder-u-e">
+                                <p class="no-margin">Email</p>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label style="font-weight: 100" for="inputPassword3" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control"  name="u-pass" placeholder="Password">
+                            <input type="password" class="form-control"  name="u-pass">
+                            <div class="f-placeholder-u-pa">
+                                <p class="no-margin">Password</p>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,13 +84,19 @@
                     <div class="form-group">
                         <label style="font-weight: 100;" for="inputEmail3" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" name="s-email" placeholder="Email">
+                            <input type="email" class="form-control" id="inputEmail3" name="s-email">
+                            <div class="f-placeholder-a-e">
+                                <p class="no-margin">Email</p>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label style="font-weight: 100;" for="inputPassword3" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" name="s-pass" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword3" name="s-pass">
+                            <div class="f-placeholder-a-s">
+                                <p class="no-margin">Password</p>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -129,12 +150,12 @@
                     <!--
                     <img style="width: 100%" class="product-view-m-img" src="" alt="alt">
                     -->
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <div id="product-view-carousel" class="carousel slide">    <!--data-ride="carousel" -->
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#product-view-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#product-view-carousel" data-slide-to="1"></li>
+                            <li data-target="#product-view-carousel" data-slide-to="2"></li>
                         </ol>
 
                         <!-- Wrapper for slides -->
@@ -158,11 +179,11 @@
                         </div>
 
                         <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <a class="left carousel-control" href="#product-view-carousel" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <a class="right carousel-control" href="#product-view-carousel" role="button" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>

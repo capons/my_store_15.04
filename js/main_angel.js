@@ -28,6 +28,7 @@ var goods = (function () {
         main.add_init_callback(this.basket_modal); //show basket modal
         main.add_init_callback(this.list_basket_back); //list basket menu back
         main.add_init_callback(this.order_formalization); // show form to creat order
+        main.add_init_callback(this.animate_form_input); // animate form input
     };
     doConstruct.prototype = {
         ajax_respons_rotaite: function (){ //ajax respons rotate
@@ -37,6 +38,15 @@ var goods = (function () {
             $( document ).ajaxStop(function() {
                 $( "#rotate" ).hide();
             });
+        },
+        animate_form_input: function () { //animate form input
+            input_animate($('input[name="u-name"]'),$('.f-placeholder'));
+            input_animate($('input[name="u-phone"]'),$('.f-placeholder-u-p'));
+            input_animate($('input[name="u-city"]'),$('.f-placeholder-u-c'));
+            input_animate($('input[name="u-email"]'),$('.f-placeholder-u-e'));
+            input_animate($('input[name="u-pass"]'),$('.f-placeholder-u-pa'));
+            input_animate($('input[name="s-email"]'),$('.f-placeholder-a-e'));
+            input_animate($('input[name="s-pass"]'),$('.f-placeholder-a-s'));
         },
         author_modal: function () { //modal window authorization and registration user
             $('#s-join').click(function(){                  //show registration modal
@@ -1169,6 +1179,27 @@ function product_view(id){
         }
     });
 }
+
+//function animate form input
+function input_animate(selector,placeholder) {
+    selector.mouseover(function(){
+        placeholder.stop().animate( {top:-16+'px',fontSize:'12px'}, {duration:300});
+    });
+    selector.mouseout(function(){
+        placeholder.stop().animate( {top:6+'px',fontSize:'15px'}, {duration:300});
+    });
+    selector.keyup(function(){
+        switch(selector.val().length) { //if input not empty -> hide placeholder block
+            case 0:
+                placeholder.css('display','block');
+                break;
+            default:
+                placeholder.css('display','none');
+        }
+    });
+
+}
+
 //input mask add phone number (script connect in ) libs/jquery_masked_library
 jQuery(function($) {
     $.mask.definitions['~'] = '[+-]';
